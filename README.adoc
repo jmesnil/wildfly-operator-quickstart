@@ -1,0 +1,53 @@
+# Quickstart for WildFly Operator
+
+This Java application can be used as an example for the https://github.com/jmesnil/wildfly-operator[WildFly Operator].
+
+The application provides a HTTP endpoint that returns the IP address of its host:
+
+[source,shell]
+----
+$ curl http://localhost:8080/
+{"ip":"172.17.0.3"}
+----
+
+## Instructions
+
+* Build the Web application
+
+[source,shell]
+----
+$ mvn clean package
+----
+
+* Build the Docker image
+
+[source,shell]
+----
+$ docker build -t wildfly-operator-quickstart .
+----
+
+* Test the Docker image locally
+
+[source,shell]
+----
+$ docker run -p8080:8080 wildfly-operator-quickstart
+...
+5:25:18,557 INFO  [org.jboss.as] (Controller Boot Thread) WFLYSRV0025: WildFly Full 16.0.0.Final (WildFly Core 8.0.0.Final) started in 8705ms - Started 428 of
+616 services (329 services are lazy, passive or on-demand)
+----
+
+[source,shell]
+----
+$ curl http://localhost:8080/
+{"ip":"172.17.0.3"}%
+----
+
+* Tag and push the image to https://quay.io/repository/jmesnil/wildfly-operator-quickstart[quay.io/jmesnil/wildfly-operator-quickstart]
+
+[source,shell]
+----
+$ docker tag wildfly-operator-quickstart quay.io/jmesnil/wildfly-operator-quickstart
+$ docker push quay.io/jmesnil/wildfly-operator-quickstart
+----
+
+
