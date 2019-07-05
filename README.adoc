@@ -19,11 +19,12 @@ $ curl http://localhost:8080/
 $ mvn clean package
 ----
 
-* Build the Docker image
+* Build the Docker image with https://github.com/wildfly/wildfly-s2i[WildFly S2I] for WildFly 17.0
 
 [source,shell]
 ----
-$ docker build -t wildfly-operator-quickstart .
+$ s2i build . quay.io/wildfly/wildfly-centos7:17.0 wildfly-operator-quickstart-build
+$ docker build --squash -t wildfly-operator-quickstart .
 ----
 
 * Test the Docker image locally
@@ -42,12 +43,12 @@ $ curl http://localhost:8080/
 {"ip":"172.17.0.3"}%
 ----
 
-* Tag and push the image to https://quay.io/repository/jmesnil/wildfly-operator-quickstart[quay.io/jmesnil/wildfly-operator-quickstart]
+* Tag and push the image to https://quay.io/repository/jmesnil/wildfly-operator-quickstart:17.0[quay.io/jmesnil/wildfly-operator-quickstart:17.0]
 
 [source,shell]
 ----
-$ docker tag wildfly-operator-quickstart quay.io/jmesnil/wildfly-operator-quickstart
-$ docker push quay.io/jmesnil/wildfly-operator-quickstart
+$ docker tag wildfly-operator-quickstart quay.io/jmesnil/wildfly-operator-quickstart:17.0
+$ docker push quay.io/jmesnil/wildfly-operator-quickstart:17.0
 ----
 
 
