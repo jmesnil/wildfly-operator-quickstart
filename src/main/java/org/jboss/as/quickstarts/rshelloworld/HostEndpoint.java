@@ -29,6 +29,7 @@ public class HostEndpoint {
     @GET
     @Produces({ "application/json" })
     public String getIPAddress() {
-        return "{\"ip\":\"" + hostService.getHostAddress() + "\"}".toUpperCase();
+        String payload = "{\"ip\":\"" + hostService.getHostAddress() + "\"}";
+        return payload.toUpperCase();
     }
 }
