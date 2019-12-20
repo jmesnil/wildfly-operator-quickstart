@@ -30,6 +30,6 @@ public class HostEndpoint {
     @Produces({ "application/json" })
     public String getIPAddress() {
         String payload = "{\"ip\":\"" + hostService.getHostAddress() + "\"}";
-        return payload.toLowerCase();
+        return payload.toUpperCase();
     }
 }
