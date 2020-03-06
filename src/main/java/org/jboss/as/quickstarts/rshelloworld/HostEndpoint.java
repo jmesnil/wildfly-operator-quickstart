@@ -29,7 +29,7 @@ public class HostEndpoint {
     @GET
     @Produces({ "application/json" })
     public String getIPAddress() {
-        String payload = "{\"PAPA\":\"" + hostService.getHostAddress() + "\"}";
+        String payload = "{\"POPO\":\"" + hostService.getHostAddress() + "\"}";
         return payload.toUpperCase();
     }
 }
